@@ -1,0 +1,145 @@
+@import "bootstrap";
+
+body {
+    background: #52a9ac54 !important;
+    font-family: 'Muli', sans-serif;
+    font-size: 14px;
+
+    #navbarSupportedContent {
+        display: block !important;
+
+        .navbar-nav {
+            float: right;
+        }
+    }
+
+    .content {
+        width: 1000px;
+        margin: auto;
+        padding: 20px 30px 80px 30px;
+
+        .card-content {
+            background: #ffffff;
+            box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
+            padding: 20px;
+            margin: 0;
+
+            .form-title {
+                color: #52a9ac;
+                padding-left: 1.25rem;
+            }
+
+            p {
+                text-indent: 50px;
+                white-space: pre-wrap;
+                word-break: break-word;
+            }
+        }
+
+        .container {
+            // background-color: #fff;
+            // padding: 20px;
+            max-width: none !important;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            display: inline-block;
+
+            .form-title {
+                color: #52a9ac;
+            }
+
+            .required:after {
+                content: " *";
+                color: red;
+            }
+
+            .field_with_errors {
+                display: inline;
+            }
+        }
+
+        .post-list-wrapper {
+            margin: 20px 0 0;
+            /* border: 1px solid #52a9ac; */
+            border-radius: 1px;
+            box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
+
+            .card-header {
+                padding: 10px;
+                background-color: #52a9ac;
+                display: block;
+
+                h5 {
+                    font-weight: bold;
+                    color: #fff;
+                    margin-bottom: 0;
+
+                    .icon-flag {
+                        margin-top: 5px;
+                    }
+                }
+
+                .last-modified-date {
+                    color: #fff;
+                    font-size: 12px;
+                }
+            }
+
+            .card-body {
+                background-color: #fff;
+                padding: 10px;
+                display: inline-block;
+                width: 100%;
+                word-break: break-all;
+
+                p {
+                    text-indent: 80px;
+                }
+
+            }
+        }
+
+        .submit-btn-div {
+            width: 100%;
+            display: inline-block;
+            text-align: right;
+        }
+
+        .btn {
+            color: #fff;
+            border-radius: 8px;
+        }
+
+        .submit-btn {
+            background-color: #52a9ac;
+            margin-left: 10px;
+            border: 1px solid #fff !important;
+        }
+
+        .cancel-btn {
+            background-color: #746f6f91;
+        }
+
+        .delete-btn {
+            margin-left: 10px;
+            background-color: #cc2222;
+        }
+
+        .delete-icon {
+            color: red;
+        }
+
+        .pwd-edit-btn {
+            color: #52a9ac;
+            border: 1px solid #52a9ac;
+            margin-left: 15px;
+        }
+    }
+
+    .error-msg {
+        color: red;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+}

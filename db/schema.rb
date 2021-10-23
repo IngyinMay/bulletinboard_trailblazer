@@ -10,19 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_12_031705) do
+ActiveRecord::Schema.define(version: 2021_10_12_074529) do
 
-  create_table "users", force: :cascade do |t|
+  create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description", null: false
+    t.boolean "public_flag", null: false
+    t.integer "created_by", null: false
+    t.integer "updated_by"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
-    t.text "password", null: false
+    t.text "password_digest", null: false
     t.boolean "super_user_flag"
-    t.integer "role", limit: 1
+    t.integer "role", limit: 1, null: false
     t.string "phone"
     t.string "address"
     t.date "birthday"
     t.integer "created_by"
-    t.datetime "deleted_at"
+    t.integer "updated_by"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

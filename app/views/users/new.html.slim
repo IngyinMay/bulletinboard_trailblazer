@@ -1,0 +1,4 @@
+.container
+    h2.form-title Add User
+    = render "form", user: @form, url: new_user_users_path(@form), method: :post, back: users_path
+

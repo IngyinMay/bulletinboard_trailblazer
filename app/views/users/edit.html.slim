@@ -1,0 +1,4 @@
+.container
+    h2.form-title Edit User
+    = render "form", user: @form, url: edit_user_path(@form), method: :put, back: user_path
+        

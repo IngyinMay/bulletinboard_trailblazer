@@ -1,0 +1,35 @@
+.container
+  .user-list-container
+    h2.user-list-title.table-count#table_count
+    #new_list_button_option
+    .user-card-content
+      #main_table
+        table#userTable.user-form-table.user-list-table
+          thead
+            tr
+              th ID
+              th Name
+              th Email
+              th Phone No
+              th Address
+              th Birthday/定員
+              th Role
+              th 
+          tbody
+            - @users.each_with_index  do |user, index|
+              tr data-url== user_path(user)
+                td ==index += 1
+                td == user.name
+                td == user.email
+                td == user.phone
+                td == user.address
+                td == user.birthday
+                td ==  user.super_user_flag == true ? "Super User" :  (user.role == 1 ? 'Level1 User' : 'Level2 User')
+                td = link_to '<i class="icon-trash"></i>'.html_safe, user_path(user), method: :delete, data: { confirm: "Are you sure?" }, class: "btn delete-icon"
+  - if current_user.super_user_flag
+    div.submit-btn-div
+      = link_to "Create User", new_user_users_path, class:"btn submit-btn"
+
+= javascript_pack_tag 'user/index'
+= stylesheet_link_tag  'users'
+

@@ -1,0 +1,176 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+/* for datatable */
+.user-list-container {
+    margin-bottom: 10px;
+
+    .user-list-option {
+
+        .user-list-option-right {
+            display: block;
+            text-align: right;
+            margin: 5px 0;
+        }
+
+        #userTable_previous,
+        #userTable_next,
+        .user-list-option-right .previous,
+        .user-list-option-right .next {
+            font-size: 0;
+        }
+
+        #userTable_previous,
+        .user-list-option-right .previous {
+            padding-left: 5px;
+
+            &:after {
+                content: "<";
+                font-size: 14px;
+                margin-right: 10px;
+            }
+        }
+
+        #userTable_next,
+        .user-list-option-right .next {
+            padding-right: 5px;
+
+            &:after {
+                content: ">";
+                font-size: 14px;
+                margin-left: 10px;
+            }
+        }
+
+        #userTable_paginate a,
+        .user-list-option-right a {
+            color: #fff;
+            float: none;
+            text-align: center;
+            border-radius: 4px !important;
+            display: inline-block;
+            background-color: #52a9ac;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        #userTable_paginate span a,
+        .user-list-option-right span a {
+            padding: 0 7px;
+        }
+
+    }
+
+    .user-card-content {
+        margin: 20px 0;
+
+        .dataTables_wrapper {
+
+            .user-search-option {
+                border-bottom: 1px solid #D6DEE5;
+                border-radius: 6px 6px 0 0;
+                padding-bottom: 18px;
+                color: #313E51;
+                font-size: 14px;
+                font-weight: 200;
+                -webkit-box-orient: vertical;
+                -ms-box-orient: vertical;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -moz-flex;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-align-items: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                -webkit-justify-content: space-between;
+                justify-content: space-between;
+
+                label {
+                    margin-bottom: 0;
+                    margin-right: 5px;
+                    color: #313E51;
+                }
+
+                .user-search-left {
+                    -webkit-box-orient: vertical;
+                    -ms-box-orient: vertical;
+                    display: -webkit-box;
+                    display: -moz-box;
+                    display: -ms-flexbox;
+                    display: -moz-flex;
+                    display: -webkit-flex;
+                    display: flex;
+                    -webkit-align-items: center;
+                    -webkit-box-align: center;
+                    -ms-flex-align: center;
+                    align-items: center;
+                }
+
+                .user-search-right {
+                    .dataTables_length {
+                        border-left: 1px solid #D6DEE5;
+                        padding-left: 11px;
+                    }
+                }
+            }
+
+            #table_count {
+                font-size: 14px;
+                font-weight: 200;
+                margin: 20px 0;
+            }
+
+            .relative {
+                position: relative;
+                overflow: auto;
+                overflow-y: hidden;
+
+                .user-list-table {
+                    margin: 0;
+                    padding: 0;
+                    border: none;
+                    border-collapse: collapse;
+                    word-break: keep-all;
+                    white-space: nowrap;
+                    width: 100% !important;
+
+                    th {
+                        border-radius: 0 !important;
+                        border-width: 1px 1px 0px 1px;
+                        border-style: solid;
+                        border-color: #D6DEE5;
+                        background-color: #EFF2F7;
+                        color: #313E51;
+                        font-size: 14px;
+                        font-weight: 200;
+                        border: 1px solid #D6DEE5;
+                        padding: 10px 13px;
+                        text-align: center;
+                    }
+
+                    tbody {
+                        tr {
+                            cursor: pointer;
+
+                            td {
+                                vertical-align: middle;
+                                border: 1px solid #D6DEE5;
+                            }
+                        }
+
+                        tr:nth-child(even) td {
+                            background: rgba(239, 242, 247, 0.3);
+                        }
+                    }
+
+                }
+            }
+        }
+
+    }
+}

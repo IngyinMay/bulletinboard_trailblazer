@@ -1,0 +1,63 @@
+= form_with model: user, url: url, method: method do |f|
+
+    .form-group
+        = f.label :name, "User Name", class: "required"
+        = f.text_field :name, class: "form-control"
+        - if user.errors[:name].any?
+            .error-msg This  #{ user.errors[:name][0] }
+
+    .form-group
+        = f.label :email, class: "required"
+        = f.text_field :email, class: "form-control"
+        - if user.errors[:email].any?
+            .error-msg This  #{ user.errors[:email][0] }
+
+    -if user.id == nil
+        .form-group
+            = f.label :password, class: "required"
+            = f.password_field :password, class: "form-control"
+            - if user.errors[:password].any?
+                .error-msg This  #{ user.errors[:password][0] }
+
+        .form-group
+            = f.label :password_confirmation, "Confirm Password", class: "required"
+            = f.password_field :password_confirmation, class: "form-control"
+            - if user.errors[:password_confirmation].any?
+                .error-msg This  #{ user.errors[:password_confirmation][0] }
+
+    .form-group
+        = f.label :phone
+        = f.text_field :phone, class: "form-control"
+        - if user.errors[:phone].any?
+            .error-msg This  #{ user.errors[:phone][0] }
+
+    .form-group
+        = f.label :address
+        = f.text_field :address, class: "form-control"
+        - if user.errors[:address].any?
+            .error-msg This  #{ user.errors[:address][0] }
+
+    / .form-group
+    /     = f.label :birthday
+    /     = f.date_field :birthday, class: "form-control"
+
+    .form-group
+        = f.label :super_user_flag, "Create as", class: "required"
+        br
+        = f.radio_button :super_user_flag, true, class: "super-user-flag"
+        = f.label :super_user_flag, "Admin", :value => true
+        br
+        = f.radio_button :super_user_flag, false, class: "super-user-flag"
+        = f.label :super_user_flag, "User", :value => false
+        - if user.errors[:super_user_flag].any?
+            .error-msg This  #{ user.errors[:super_user_flag][0] }
+
+    .form-group.user-role hidden=('hidden')
+        = f.label :role, "Role"
+        = f.select(:role, options_for_select(Constants::USER_ROLES, user.role), {}, {:class => "form-control col-sm-5"})
+
+    .submit-btn-div
+        = link_to "Cancel", back, class:"btn cancel-btn"
+        = f.submit class: "btn submit-btn"
+
+= javascript_pack_tag 'user/_form'

@@ -1,0 +1,3 @@
+.container
+  h2.form-title Create Your Desired Post
+  = render "form", post: @form, url: new_post_posts_path(@form), method: :post, back: posts_path

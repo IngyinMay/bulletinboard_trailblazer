@@ -1,0 +1,36 @@
+.container
+    h2.form-title Edit Profile
+    = form_with model: @form, url: edit_profile_users_path, method: :put do |f|
+
+        .form-group
+            = f.label :name, "User Name", class: "required"
+            = f.text_field :name, class: "form-control"
+            - if @form.errors[:name].any?
+                .error-msg This  #{ @form.errors[:name][0] }
+
+        .form-group
+            = f.label :email, class: "required"
+            = f.text_field :email, class: "form-control"
+            - if @form.errors[:email].any?
+                .error-msg This  #{ @form.errors[:email][0] }
+
+        .form-group
+            = f.label :phone
+            = f.text_field :phone, class: "form-control"
+            - if @form.errors[:phone].any?
+                .error-msg This  #{ @form.errors[:phone][0] }
+
+        .form-group
+            = f.label :address
+            = f.text_field :address, class: "form-control"
+            - if @form.errors[:address].any?
+                .error-msg This  #{ @form.errors[:address][0] }
+
+        / .form-group
+        /     = f.label :birthday
+        /     = f.date_field :birthday, class: "form-control"
+
+        .submit-btn-div
+            = link_to "Cancel", profile_users_path, class:"btn cancel-btn"
+            = f.submit class: "btn submit-btn"
+        
