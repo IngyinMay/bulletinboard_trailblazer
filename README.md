@@ -5,7 +5,13 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version - 2.5.9
+* Ruby version (2.5.9)
+
+* Rails version (6.1.4.1)
+
+* trailblazer-rails (2.1.7)
+
+* slim-rails (3.3.0)
 
 * System dependencies
 

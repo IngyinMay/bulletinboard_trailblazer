@@ -1,21 +1,21 @@
 module User::Operation
-    class Login < Trailblazer::Operation
-      class Present < Trailblazer::Operation
-        step Model(User, :new)
-        step Contract::Build( constant: User::Contract::Login )
-      end
-      step Nested( Present )
-      step Contract::Validate( key: :user )
-      step :model!
-      def model!(options, params:, **)
-        user = User.find_by(email: params[:user][:email])
-        options["user"] = user
-        if user && user.authenticate(params[:user][:password])
-          true
-        else
-          options["email_pwd_fail"]  = "Login fail";
-          false
-        end
+  class Login < Trailblazer::Operation
+    class Present < Trailblazer::Operation
+      step Model(User, :new)
+      step Contract::Build(constant: User::Contract::Login)
+    end
+    step Nested(Present)
+    step Contract::Validate(key: :user)
+    step :model!
+    def model!(options, params:, **)
+      user = User.find_by(email: params[:user][:email])
+      options['user'] = user
+      if user && user.authenticate(params[:user][:password])
+        true
+      else
+        options['email_pwd_fail'] = 'Login fail'
+        false
       end
     end
   end
+end

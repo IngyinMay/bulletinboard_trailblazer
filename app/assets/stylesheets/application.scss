@@ -2,14 +2,26 @@
 
 body {
     background: #52a9ac54 !important;
-    font-family: 'Muli', sans-serif;
+    font-family: inherit;
     font-size: 14px;
+    nav {
+        .navbar-brand {
+            color: #068084 !important;
+        }
+        #navbarSupportedContent {
+            display: block !important;
+    
+            .navbar-nav {
+                float: right;
+                
+                .nav-link {
+                    color: #000;
+                }
 
-    #navbarSupportedContent {
-        display: block !important;
-
-        .navbar-nav {
-            float: right;
+                .dropdown-item:active {
+                    background-color: #52a9ac !important;
+                }
+            }
         }
     }
 
@@ -33,6 +45,7 @@ body {
                 text-indent: 50px;
                 white-space: pre-wrap;
                 word-break: break-word;
+                line-height: 23px;
             }
         }
 
@@ -71,7 +84,7 @@ body {
                 display: block;
 
                 h5 {
-                    font-weight: bold;
+                    font-weight: 300;
                     color: #fff;
                     margin-bottom: 0;
 

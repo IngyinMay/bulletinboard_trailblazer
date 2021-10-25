@@ -7,7 +7,7 @@
       h5 #{post.title} #{ post.public_flag== true ? '<i class="icon-flag"></i>'.html_safe : ''}
       .last-modified-date Last updated on : #{post.created_at.strftime("%Y/%m/%d %I:%M:%S %p " )}
     .card-body
-      p #{ truncate(post.description.html_safe, length:200)}
+      p #{ truncate(post.description.html_safe, length:320)}
       .submit-btn-div
         = link_to "Show More", post_path(post), class: "btn submit-btn"
         = link_to "Delete", post_path(post),
