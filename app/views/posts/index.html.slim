@@ -1,15 +1,16 @@
 - if current_user
-  .submit-btn-div
-    = link_to "Add Post +", new_post_posts_path, class: "btn submit-btn"
+    .submit-btn-div
+        = link_to "Add Post +", new_post_posts_path, class: "btn submit-btn"
 - @model.each do |post|
-  .post-list-wrapper
-    .card-header
-      h5 #{post.title} #{ post.public_flag== true ? '<i class="icon-flag"></i>'.html_safe : ''}
-      .last-modified-date Last updated on : #{post.created_at.strftime("%Y/%m/%d %I:%M:%S %p " )}
-    .card-body
-      p #{ truncate(post.description.html_safe, length:320)}
-      .submit-btn-div
-        = link_to "Show More", post_path(post), class: "btn submit-btn"
-        = link_to "Delete", post_path(post),
-          method: :delete,
-          data: { confirm: "Are you sure?" }, class: "btn delete-btn"
+    .post-list-wrapper
+        .card-header
+            h5 #{post.title} #{ post.public_flag== true ? '<i class="icon-flag"></i>'.html_safe : ''}
+            .last-modified-date Last updated on : #{post.created_at.strftime("%Y/%m/%d %I:%M:%S %p " )}
+        .card-body
+            p #{ truncate(post.description.html_safe, length:320)}
+            -if logged_in?
+                .submit-btn-div
+                    = link_to "Show More", post_path(post), class: "btn submit-btn"
+                    = link_to "Delete", post_path(post),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" }, class: "btn delete-btn"

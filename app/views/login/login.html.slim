@@ -10,17 +10,14 @@
                         = f.email_field :email, class: 'form-control'
                         - if @form.errors[:email].any?
                             .error-msg This  #{ @form.errors[:email][0] }
-                    - Rails.logger.info(@form.errors.inspect)
                     .form-group
                         = f.label :password, class: "d-flex flex-row align-items-center required"
                         = f.password_field :password, class: 'form-control'
                         - if @form.errors[:password].any?
                             .error-msg This  #{ @form.errors[:password][0] }
                         a.ml-auto.border-link.small-xl  href="#" Forget?
-
                     .form-group.pt-1
                         = f.submit "Log In", class: "btn btn-primary btn-block" 
-
                     p.small-xl.pt-3.text-center
                         span.text-muted Not a member?
                         = link_to "Sign Up", new_user_users_path

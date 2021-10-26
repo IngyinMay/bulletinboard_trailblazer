@@ -1,6 +1,6 @@
 .card-content
-  h2.form-title #{@post.title} #{ @post.public_flag== true ? '<i class="icon-flag"></i>'.html_safe : ''}
-  p #{@post.description}
-  - if can_edit(@post)
-    .submit-btn-div
-      = link_to "Edit", edit_post_path(@post), class: "btn submit-btn"
+    h2.form-title #{@post.title} #{ @post.public_flag== true ? '<i class="icon-flag"></i>'.html_safe : ''}
+    p #{@post.description}
+    - if can_edit(@post)
+        .submit-btn-div
+            = link_to "Edit", edit_post_path(@post), class: "btn submit-btn"

@@ -1,31 +1,31 @@
 .card-content.clearfix
-  h2.form-title User Detail 
-  .card-body
-    .form-group.row
-      label.col-sm-2.col-form-label Name 
-      div.col-sm-10
-        label.col-sm-10.col-form-label = @model.name
-    .form-group.row
-      label.col-sm-2.col-form-label Email 
-      div.col-sm-10
-        label.col-sm-10.col-form-label = @model.email
-    .form-group.row
-      label.col-sm-2.col-form-label Phone 
-      div.col-sm-10
-        label.col-sm-10.col-form-label = @model.phone
-    .form-group.row
-      label.col-sm-2.col-form-label Address 
-      div.col-sm-10
-        label.col-sm-10.col-form-label = @model.address
-    .form-group.row
-      label.col-sm-2.col-form-label Birthday 
-      div.col-sm-10
-        label.col-sm-10.col-form-label = @model.birthday
-    .form-group.row
-      label.col-sm-2.col-form-label Type 
-      div.col-sm-10
-        label.col-sm-10.col-form-label = @model.super_user_flag == true ? "Super User" :  (@model.role == 1 ? 'Level1 User' : 'Level2 User')
-    - if current_user.super_user_flag
-      .submit-btn-div
-        = link_to "Edit", edit_user_path(@model), class: "btn submit-btn"
+    h2.form-title User Detail
+    .card-body
+        .form-group.row
+            label.col-sm-2.col-form-label Name
+            div.col-sm-10
+                label.col-sm-10.col-form-label = @model.name
+        .form-group.row
+            label.col-sm-2.col-form-label Email
+            div.col-sm-10
+                label.col-sm-10.col-form-label = @model.email
+        .form-group.row
+            label.col-sm-2.col-form-label Phone
+            div.col-sm-10
+                label.col-sm-10.col-form-label = @model.phone
+        .form-group.row
+            label.col-sm-2.col-form-label Address
+            div.col-sm-10
+                label.col-sm-10.col-form-label = @model.address
+        .form-group.row
+            label.col-sm-2.col-form-label Birthday
+            div.col-sm-10
+                label.col-sm-10.col-form-label = @model.birthday
+        .form-group.row
+            label.col-sm-2.col-form-label Type
+            div.col-sm-10
+                label.col-sm-10.col-form-label = @model.super_user_flag == true ? "Super User" :  (@model.role == 1 ? 'Level1 User' : 'Level2 User')
+        - if current_user.super_user_flag
+            .submit-btn-div
+                = link_to "Edit", edit_user_path(@model), class: "btn submit-btn"
         
