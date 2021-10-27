@@ -4,7 +4,7 @@
 - @model.each do |post|
     .post-list-wrapper
         .card-header
-            h5 #{post.title} #{ post.public_flag== true ? '<i class="icon-flag"></i>'.html_safe : ''}
+            h5 #{post.title} #{ post.public_flag== true ? '<i class="icon-globe"></i>'.html_safe : '<i class="icon-lock"></i>'.html_safe}
             .last-modified-date Last updated on : #{post.created_at.strftime("%Y/%m/%d %I:%M:%S %p " )}
         .card-body
             p #{ truncate(post.description.html_safe, length:320)}
