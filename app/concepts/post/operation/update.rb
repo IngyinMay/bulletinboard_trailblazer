@@ -8,7 +8,6 @@ module Post::Operation
         options['model'] = Post.find(params[:id])
       end
     end
-
     step Nested(Present)
     step :assign_current_user!
     step Contract::Validate(key: :post)

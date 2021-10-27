@@ -8,7 +8,6 @@ module User::Operation
         options['model'] = User.find(params[:id])
       end
     end
-
     step Nested(Present)
     step :assign_current_user!
     step Contract::Validate(key: :user)

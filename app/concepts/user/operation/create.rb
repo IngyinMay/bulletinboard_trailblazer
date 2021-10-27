@@ -4,7 +4,6 @@ module User::Operation
       step Model(User, :new)
       step Contract::Build(constant: User::Contract::Create)
     end
-
     step Nested(Present)
     step :assign_current_user!
     step Contract::Validate(key: :user)
