@@ -1,6 +1,7 @@
 module User::Contract
   class Update < Reform::Form
     property :name
+    property :profile
     property :email
     property :role
     property :phone

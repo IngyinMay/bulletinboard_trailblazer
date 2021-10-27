@@ -7,6 +7,14 @@
             .error-msg This  #{ user.errors[:name][0] }
 
     .form-group
+        = f.label :profile
+        br
+        = f.file_field  :profile, accept: 'image/png,image/gif,image/jpeg'
+        = image_tag  user.profile.url ? user.profile.url : " "
+        - if user.errors[:profile].any?
+            .error-msg This  #{ user.errors[:profile][0] }
+
+    .form-group
         = f.label :email, class: "required"
         = f.text_field :email, class: "form-control"
         - if user.errors[:email].any?

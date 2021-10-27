@@ -2,6 +2,7 @@ require 'reform/form/validation/unique_validator'
 module User::Contract
   class Create < Reform::Form
     property :name
+    property :profile
     property :email
     property :password
     property :password_confirmation, virtual: true
