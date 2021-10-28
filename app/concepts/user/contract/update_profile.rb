@@ -13,6 +13,6 @@ module User::Contract
                       unique: true
     validates :phone, numericality: true, length: { minimum: 10, maximum: 15 }, allow_blank: true
     validates :address, length: { maximum: 255 }, allow_blank: true
-    #   validates :birthday, format: { with: Constants::VALID_DATE_FORMAT }, allow_blank: true
+    validates :birthday, format: { with: Constants::VALID_DATE_FORMAT }, allow_blank: true
   end
 end

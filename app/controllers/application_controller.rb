@@ -19,5 +19,13 @@ class ApplicationController < ActionController::Base
     current_user.super_user_flag || (post.created_by == current_user.id && current_user.role == Constants::USER_ROLES['Level1'])
   end
 
+  def check_resource(resource)
+    if resource 
+      true
+    else 
+      render :file => Rails.root.join('public', '404.html'),  :status => 404
+    end
+  end
+
   helper_method :current_user, :logged_in?, :can_create, :can_edit
 end

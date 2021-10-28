@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   # create user
   # params: user
   def create
-    run User::Operation::Create, current_user: current_user do |_result|
+    run User::Operation::Create, current_user: current_user do |result|
       return redirect_to users_path
     end
     render :new
@@ -29,13 +29,15 @@ class UsersController < ApplicationController
   # params: id
   def show
     run User::Operation::Show
+    check_resource(result[:model])
   end
 
   # function: edit
   # show user edit form
   # params: id
   def edit
-    run User::Operation::Update::Present
+    run User::Operation::Update::Present 
+    check_resource(result[:model])
   end
 
   # function: update

@@ -29,6 +29,7 @@ class PostsController < ApplicationController
     run Post::Operation::Update::Present do |result|
       @post = result[:model]
     end
+    check_resource(@post)
   end
 
   # function: edit
@@ -36,6 +37,7 @@ class PostsController < ApplicationController
   # params: id
   def edit
     run Post::Operation::Update::Present
+    check_resource(result[:model])
   end
 
   # function: update
