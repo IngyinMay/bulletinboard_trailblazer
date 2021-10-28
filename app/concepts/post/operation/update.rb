@@ -1,12 +1,8 @@
 module Post::Operation
   class Update < Trailblazer::Operation
     class Present < Trailblazer::Operation
-      step :model!
+      step Model(Post, :find_by)
       step Contract::Build(constant: Post::Contract::Create)
-
-      def model!(options, params:, **)
-        options['model'] = Post.find(params[:id])
-      end
     end
     step Nested(Present)
     step :assign_current_user!
