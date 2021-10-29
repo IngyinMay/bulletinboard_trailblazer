@@ -12,6 +12,7 @@
                             th Email
                             th Phone No
                             th Address
+                            th Birthday
                             th Role
                             th 
                     tbody
@@ -22,7 +23,8 @@
                                 td == user.email
                                 td == user.phone
                                 td == user.address
-                                td ==  user.super_user_flag == true ? "Super User" :  (user.role == 1 ? 'Level1 User' : 'Level2 User')
+                                td == user.birthday
+                                td == user.super_user_flag == true ? "Super User" :  (user.role == 1 ? 'Level1 User' : 'Level2 User')
                                 td = link_to '<i class="icon-trash"></i>'.html_safe, user_path(user), method: :delete, data: { confirm: "Are you sure?" }, class: "btn delete-icon"
     - if current_user.super_user_flag
         div.submit-btn-div

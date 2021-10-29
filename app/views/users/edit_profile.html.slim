@@ -26,9 +26,11 @@
             - if @form.errors[:address].any?
                 .error-msg This  #{ @form.errors[:address][0] }
 
-        / .form-group
-        /     = f.label :birthday
-        /     = f.date_field :birthday, class: "form-control"
+        .form-group
+            = f.label :birthday
+            = f.date_field :birthday, class: "form-control", value: @form.birthday
+            - if @form.errors[:address].any?
+                .error-msg This  #{ @form.errors[:birthday][0] }
 
         .submit-btn-div
             = link_to "Cancel", profile_users_path, class:"btn cancel-btn"
