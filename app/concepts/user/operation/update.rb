@@ -1,14 +1,9 @@
 module User::Operation
   class Update < Trailblazer::Operation
     class Present < Trailblazer::Operation
-      step :model!
+      step Model(User, :find_by)
       step Contract::Build(constant: User::Contract::Update)
-
-      def model!(options, params:, **)
-        options['model'] = User.find(params[:id])
-      end
     end
-
     step Nested(Present)
     step :assign_current_user!
     step Contract::Validate(key: :user)

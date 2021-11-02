@@ -30,16 +30,16 @@ body {
         margin: auto;
         padding: 20px 30px 80px 30px;
 
+        .form-title {
+            color: #52a9ac;
+        }
+
         .card-content {
             background: #ffffff;
             box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
+            border-radius: 10px;
             padding: 20px;
             margin: 0;
-
-            .form-title {
-                color: #52a9ac;
-                padding-left: 1.25rem;
-            }
 
             p {
                 text-indent: 50px;
@@ -50,17 +50,12 @@ body {
         }
 
         .container {
-            // background-color: #fff;
-            // padding: 20px;
             max-width: none !important;
             width: 100%;
             padding: 20px;
             background-color: #fff;
             display: inline-block;
-
-            .form-title {
-                color: #52a9ac;
-            }
+            border-radius: 10px;
 
             .required:after {
                 content: " *";

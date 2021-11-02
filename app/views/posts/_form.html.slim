@@ -10,7 +10,7 @@
         - if post.errors[:description].any?
             .error-msg This  #{ post.errors[:description][0] }
     .form-group
-        label.required Post Privacy Setting
+        label.required Privacy Setting
         br
         =f.radio_button :public_flag, true
         =f.label :public_flag, "Public", :value => "true"
@@ -21,4 +21,4 @@
             .error-msg This  #{ post.errors[:public_flag][0] }
     .submit-btn-div
         = link_to "Cancel", back, class:"btn cancel-btn"
-        = f.submit "Create", class: "btn submit-btn"
+        = f.submit class: "btn submit-btn"

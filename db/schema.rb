@@ -37,5 +37,4 @@ ActiveRecord::Schema.define(version: 2021_10_27_033850) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "profile"
   end
-
 end

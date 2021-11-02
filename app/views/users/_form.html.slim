@@ -45,9 +45,11 @@
         - if user.errors[:address].any?
             .error-msg This  #{ user.errors[:address][0] }
 
-    / .form-group
-    /     = f.label :birthday
-    /     = f.date_field :birthday, class: "form-control"
+    .form-group
+        = f.label :birthday
+        = f.date_field :birthday, class: "form-control", value: user.birthday
+        - if user.errors[:birthday].any?
+            .error-msg This  #{ user.errors[:birthday][0] }
 
     .form-group
         = f.label :super_user_flag, "Create as", class: "required"

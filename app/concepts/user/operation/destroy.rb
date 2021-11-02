@@ -1,8 +1,10 @@
 module User::Operation
   class Destroy < Trailblazer::Operation
+    step Model(User, :find_by)
     step :delete!
-    def delete!(_options, params:, **)
-        User.destroy(params[:id])
+
+    def delete!(options, model:, **)
+      model.destroy
     end
   end
 end
