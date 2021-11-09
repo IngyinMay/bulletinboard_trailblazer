@@ -3,6 +3,7 @@ module User::Contract
   class Create < Reform::Form
     property :name
     property :profile
+    property :profile_cache
     property :email
     property :password
     property :password_confirmation, virtual: true

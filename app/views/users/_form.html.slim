@@ -10,7 +10,10 @@
         = f.label :profile
         br
         = f.file_field  :profile, accept: 'image/png,image/gif,image/jpeg'
-        = image_tag  user.profile.url ? user.profile.url : " "
+        = f.hidden_field :profile_cache, value: user.profile_cache
+        
+        = image_tag image_url(user.profile.present?  ? user.profile.path : " "), id: "img_prev"
+        
         - if user.errors[:profile].any?
             .error-msg This  #{ user.errors[:profile][0] }
 
