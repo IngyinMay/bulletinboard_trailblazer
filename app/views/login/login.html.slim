@@ -15,7 +15,7 @@
                         - if @form.errors[:password].any?
                             .error-msg This  #{ @form.errors[:password][0] }
                         br
-                        a.ml-auto.border-link.small-xl  href="#" Forget?
+                        = link_to "Forget?", show_password_reset_path, class: "ml-auto border-link small-xl"
                     .form-group.pt-1
                         = f.submit "Log In", class: "btn btn-primary btn-block" 
 

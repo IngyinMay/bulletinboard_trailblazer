@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  default_url_options :host => "http://127.0.0.1:3000"
   root 'posts#index'
   get '/login', to: 'login#login'
   post '/login', to: 'login#action_login'
   get '/logout', to: 'login#logout'
+  get '/show_password_reset', to: 'login#password_reset'
+  post '/sent_password_reset', to: 'login#password_reset_sent'
+  get '/reset_password/:token/url', to: 'login#reset_password_form', as: :reset_password
+  post '/reset_password/:token/url', to: 'login#reset_password'
 
   resources :users, only: %i[index show update destroy] do
     collection do
