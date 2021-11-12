@@ -30,6 +30,10 @@ Rails.application.routes.draw do
     collection do
       get :new_post, to: 'posts#new'
       post :new_post, to: 'posts#create'
+      get :export
+      get :csv_format
+      get :import
+      post :import, to: 'posts#action_import'
     end
     member do
       get :edit

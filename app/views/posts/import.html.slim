@@ -1,0 +1,14 @@
+.container
+    h3.card-header Create or Update Post by CSV
+    .card-body
+        = form_tag import_posts_path, multipart: true do |form|
+            .field.form-group.row
+                .col-sm-2.col-form-label.text-end CSV file
+                .col-sm-5
+                    = file_field_tag :file, accept: 'text/csv', class: "form-control"
+                    - if @errors
+                        .error-msg This  #{ @errors[:file][0] }
+            .submit-btn-div
+                = button_tag "Clear", class: 'btn cancel-btn', type: :reset
+                = link_to "Download CSV Format <i class=\"icon-download-alt\"></i>".html_safe, csv_format_posts_path(format: :csv), class: "btn submit-btn"
+                = submit_tag "Upload", class: 'btn submit-btn'

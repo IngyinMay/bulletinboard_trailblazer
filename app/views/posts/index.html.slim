@@ -1,6 +1,10 @@
-- if current_user
+- if can_create
     .submit-btn-div
-        = link_to "Add Post +", new_post_posts_path, class: "btn submit-btn"
+        a.btn.dropdown-toggle.submit-btn#dropdownMenuLink role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" New Post
+        .dropdown-menu aria-labelledby="dropdownMenuLink" style="left:-54px;"
+            = link_to "Upload CSV <i class=\"icon-upload-alt\"></i>".html_safe, import_posts_path, class: "dropdown-item"
+            = link_to "Add Post +", new_post_posts_path, class: "dropdown-item"
+        = link_to "Download CSV <i class=\"icon-download-alt\"></i>".html_safe, export_posts_path(format: :csv), class: "btn submit-btn"
 - @model.each do |post|
     .post-list-wrapper
         .card-header

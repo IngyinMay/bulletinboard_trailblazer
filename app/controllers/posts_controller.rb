@@ -58,4 +58,39 @@ class PostsController < ApplicationController
       return redirect_to posts_path, notice: 'Post have been deleted'
     end
   end
+
+  # function: export
+  # download post list csv
+  # @return [<Type>] <csv>
+  def export
+    run Post::Operation::Export::CsvData do |result|
+      respond_to do |format|
+        format.html
+        format.csv { send_data result[:csv_text],  :filename => "post_list.csv" }
+      end
+    end
+  end
+
+  # function: csv_format
+  # download post_csv format for upload
+  # @return [<Type>] <csv>
+  def csv_format
+    run Post::Operation::Export::Format do |result|
+      respond_to do |format|
+        format.html
+        format.csv { send_data result[:csv_format],  :filename => "format.csv" }
+      end
+    end
+  end
+
+  # function: action_import
+  # import post csv
+  def action_import
+    run Post::Operation::Import, current_user_id: current_user.id do |_|
+      return redirect_to posts_path, notice: Messages::UPLOAD_SUCCESSFUL
+    end
+    @errors = result["contract.default"].errors
+    render :import
+    return
+  end
 end

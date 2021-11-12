@@ -6,7 +6,7 @@ module User::Contract
 
     def find_user_by_email
       @user = User.find_by(email: email)
-      errors.add(:email, "is not registered email.") unless @user
+      errors.add(:email,  Messages::UNREGISTERED_EMAIL) unless @user
     end
   end
 end
