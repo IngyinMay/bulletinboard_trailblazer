@@ -93,4 +93,24 @@ class PostsController < ApplicationController
     render :import
     return
   end
+
+  # function: filter
+  # filter posts by dropdown list
+  # @return [<Type>] <post>
+  def filter
+    run Post::Operation::Filter, current_user_id: current_user.id do |result|
+      @last_filter_by = result[:last_filter_by]
+      render :index
+      return
+    end
+  end
+
+  # function: search
+  # search post by keyword
+  # @return [<Type>] <post>
+  def search
+    run Post::Operation::Filter::Search
+    render :index
+    return
+  end
 end

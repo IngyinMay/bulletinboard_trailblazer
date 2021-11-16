@@ -143,6 +143,43 @@ body {
             border: 1px solid #52a9ac;
             margin-left: 15px;
         }
+
+
+        // post navigation bar
+        .posts-nav {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 20px;
+
+            .post-filter,
+            .post-search,
+            .post-count {
+                display: inline-block;
+            }
+
+            .post-search {
+                .post-filter-div {
+                    width: 200px;
+                    display: inline-block;
+                    background-color: #fff;
+
+                    .form-control {
+                        display: inline-block;
+                        width: 80%;
+                        border: none;
+                    }
+                    .search-icon {
+                        float: right;
+                        padding: 10px;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .btn {
+                float: right;
+            }
+        }
     }
 
     .error-msg {

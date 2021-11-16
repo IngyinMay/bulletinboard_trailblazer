@@ -34,6 +34,8 @@ Rails.application.routes.draw do
       get :csv_format
       get :import
       post :import, to: 'posts#action_import'
+      get :filter
+      get :search
     end
     member do
       get :edit

@@ -1,20 +1,28 @@
-- if can_create
-    .submit-btn-div
+- if logged_in? && can_create
+    .posts-nav
+        = form_with class: "post-search", url: search_posts_path, method: :get do |form|
+            .post-filter-div
+                = form.text_field :search_keyword, class: "form-control", value: @last_search_keyword
+                span.search-icon 
+                    i.icon-search
+        = form_with class: "post-filter", url: filter_posts_path, method: :get do |form| 
+            = form.select(:filter_by, options_for_select(Constants::POST_FILTER, @last_filter_by ? @last_filter_by : ''), {}, {:class => "form-control", :style =>"width: 200px;", onchange: 'this.form.submit()' })
         a.btn.dropdown-toggle.submit-btn#dropdownMenuLink role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" New Post
         .dropdown-menu aria-labelledby="dropdownMenuLink" style="left:-54px;"
             = link_to "Upload CSV <i class=\"icon-upload-alt\"></i>".html_safe, import_posts_path, class: "dropdown-item"
             = link_to "Add Post +", new_post_posts_path, class: "dropdown-item"
         = link_to "Download CSV <i class=\"icon-download-alt\"></i>".html_safe, export_posts_path(format: :csv), class: "btn submit-btn"
-- @model.each do |post|
-    .post-list-wrapper
-        .card-header
-            h5 #{post.title} #{ post.public_flag== true ? '<i class="icon-globe"></i>'.html_safe : '<i class="icon-lock"></i>'.html_safe}
-            .last-modified-date Last updated on : #{post.created_at.strftime("%Y/%m/%d %I:%M:%S %p " )}
-        .card-body
-            p #{ truncate(post.description.html_safe, length:320)}
-            -if logged_in?
-                .submit-btn-div
-                    = link_to "Show More", post_path(post), class: "btn submit-btn"
-                    = link_to "Delete", post_path(post),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" }, class: "btn delete-btn"
+- if @model
+    - @model.each do |post|
+        .post-list-wrapper
+            .card-header
+                h5 #{post.title} #{ post.public_flag== true ? '<i class="icon-globe"></i>'.html_safe : '<i class="icon-lock"></i>'.html_safe}
+                .last-modified-date Last updated on : #{post.created_at.strftime("%Y/%m/%d %I:%M:%S %p " )}
+            .card-body
+                p #{ truncate(post.description.html_safe, length:320)}
+                -if logged_in?
+                    .submit-btn-div
+                        = link_to "Show More", post_path(post), class: "btn submit-btn"
+                        = link_to "Delete", post_path(post),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" }, class: "btn delete-btn"
