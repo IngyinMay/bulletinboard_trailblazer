@@ -109,8 +109,10 @@ class PostsController < ApplicationController
   # search post by keyword
   # @return [<Type>] <post>
   def search
-    run Post::Operation::Filter::Search
-    render :index
-    return
+    run Post::Operation::Filter::Search do |result|
+      @last_search_keyword = result[:last_search_keyword]
+      render :index
+      return
+    end
   end
 end

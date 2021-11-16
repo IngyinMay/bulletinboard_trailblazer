@@ -19,6 +19,7 @@ module Post::Operation
 
       def search_posts!(options, params:, **)
         options[:model] = Post.where("title LIKE :title or description LIKE :desc", {:title => "%#{params[:search_keyword]}%", :desc => "%#{params[:search_keyword]}%"})
+        options[:last_search_keyword] = params[:search_keyword]
       end
     end
   end
