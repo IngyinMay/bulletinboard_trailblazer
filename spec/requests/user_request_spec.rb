@@ -76,6 +76,7 @@ RSpec.describe "User", :type => :request do
       updated_user = User.find(last_user_id)
       expect(updated_user.name).to eq('RSpec user name')
       expect(updated_user.email).to eq('rspec@gmail.com')
+      expect(flash[:notice]).to eq('User has been updated')
     end
 
     scenario "invalid user edit" do
@@ -101,8 +102,8 @@ RSpec.describe "User", :type => :request do
   describe "PUT users/edit_profile" do
     scenario "edit profile" do
       put "/users/edit_profile", params: {user: user_params}
-      # updated_profile = User.find(current_user.id)
-      # expect(updated_profile.name).to eq('Rspec Edit profile name')
+      expect(response).to redirect_to(profile_users_path)
+      expect(flash[:notice]).to eq('Profile has been updated')
     end
   end
 end

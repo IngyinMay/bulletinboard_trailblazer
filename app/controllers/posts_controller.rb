@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   # params: post, id
   def update
     run Post::Operation::Update, current_user: current_user do |result|
-      return redirect_to post_path(result[:model])
+      return redirect_to post_path(result[:model]), notice: 'Post has been updated'
     end
     render :edit
   end
@@ -55,7 +55,7 @@ class PostsController < ApplicationController
   # params: id
   def destroy
     run Post::Operation::Destroy do |_|
-      return redirect_to posts_path, notice: 'Post have been deleted'
+      return redirect_to posts_path, notice: 'Post has been deleted'
     end
   end
 

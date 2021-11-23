@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   # params: user, id
   def update
     run User::Operation::Update, current_user: current_user do |result|
-      return redirect_to user_path(result[:model])
+      return redirect_to user_path(result[:model]), notice: 'User has been updated'
     end
     render :edit
   end
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
   # params: user
   def update_profile
     run User::Operation::UpdateProfile, user_id: current_user.id do |_|
-      return redirect_to profile_users_path
+      return redirect_to profile_users_path, notice: 'Profile has been updated'
     end
     render :edit_profile
   end

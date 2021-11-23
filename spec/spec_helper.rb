@@ -99,4 +99,5 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 config.include SpecTestHelper, :type => :request
+config.include SpecTestHelper, :type => :controller
 end
