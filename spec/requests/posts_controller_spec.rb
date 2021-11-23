@@ -115,4 +115,14 @@ RSpec.describe PostsController, type: :controller do
       end
     end
   end
+
+  # function :export
+  describe "GET posts#export" do
+    it "export post list csv" do
+      Post.create! post_params
+      get :export, format: :csv
+      expect(response.header['Content-Type']).to include 'text/csv'
+      expect(response.body).to include('RSpec post title')
+    end
+  end
 end
