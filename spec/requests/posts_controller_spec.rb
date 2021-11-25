@@ -125,4 +125,56 @@ RSpec.describe PostsController, type: :controller do
       expect(response.body).to include('RSpec post title')
     end
   end
+
+  # function :action_import
+  # add your csv file in tmp/spec_test folder and name it "test.csv" or "error_test.csv"
+  describe "POST posts#action_import" do
+    it "import valid csv file from temp folder" do
+      initial_post_count = Post.count
+      post :action_import, params: { :file => fixture_file_upload("#{Rails.root}/tmp/spec_test/test.csv", 'text/csv') }
+      post = Post.last
+      final_post_count = Post.count
+      expect(post.title).to eq('rspec csv import test')
+      expect(post.description).to eq('description for rspec csv import test')
+      expect(final_post_count - initial_post_count).to eq(2)
+      expect(flash[:notice]).to eq('Data has been successfully imported.')
+    end
+
+    it "import invalid csv file from temp folder" do
+      post :action_import, params: { :file => fixture_file_upload("#{Rails.root}/tmp/spec_test/error_test.csv", 'text/csv') }
+      expect(assigns(:form).errors[:file][0]).to eq "CSV header columns are wrong"
+    end
+  end
+
+  describe "POST posts#action_import" do
+    it "create valid temp csv file and use it to test action_import" do
+      csv_rows = <<~EOS
+                  title,description,public_flag
+                  csv test title1, csv test description1, 1
+                  csv test title2, csv test description2, 0
+                  csv test title3, csv test description3, 1
+                  EOS
+      file = Tempfile.new('post_list.csv')
+      file.write(csv_rows)
+      file.rewind
+      expect {
+        post :action_import, params: { :file => Rack::Test::UploadedFile.new(file, 'text/csv') }
+      }.to change(Post, :count).by(3)
+      expect(flash[:notice]).to eq('Data has been successfully imported.')
+    end
+
+    it "create invalid temp csv file and use it to test action_import" do
+      csv_rows = <<~EOS
+                  title,description
+                  csv test title1, csv test description1, 1
+                  csv test title2, csv test description2, 0
+                  csv test title3, csv test description3, 1
+                  EOS
+      file = Tempfile.new('post_list.csv')
+      file.write(csv_rows)
+      file.rewind
+      post :action_import, params: { :file => Rack::Test::UploadedFile.new(file, 'text/csv') }
+      expect(assigns(:form).errors[:file][0]).to eq "CSV header is wrong."
+    end
+  end
 end
